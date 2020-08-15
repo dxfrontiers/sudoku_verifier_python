@@ -1,5 +1,3 @@
-import itertools
-
 from sudoku import make_puzzle, solve, puzzle_to_grid_alt
 
 
@@ -15,7 +13,7 @@ def check_sudoku(grid):
 
     for i in range(0, 9, 3):
         for j in range(0, 9, 3):
-            square = list(itertools.chain(*(row[j:j + 3] for row in grid[i:i + 3])))
+            square = [item for items in [row[j:j + 3] for row in grid[i:i + 3]] for item in items]
             squares.append(square)
 
     bad_squares = [square for square in squares if not verify_line(square)]
